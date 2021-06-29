@@ -1,0 +1,21 @@
+#!/bin/bash
+#SBATCH --job-name=run_mesa_template
+#SBATCH --output=job_output.out
+#SBATCH --error=job_error.err
+#SBATCH --partition=serial
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --time=2-12:00:00
+
+export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
+
+cp -r
+
+source $MESASDK_ROOT/bin/mesasdk_init.sh
+
+# echo "trying to execute ./mk"
+./mk
+
+#module load MESA
+# echo "trying to execute ./rn"
+./rn
